@@ -10,5 +10,6 @@ API文档
     bit-operations.md
     bitmap-operations.md
     sort.md
+    text-searching.md
 
 
