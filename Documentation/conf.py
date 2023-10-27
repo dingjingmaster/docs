@@ -8,7 +8,7 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 
 language = 'zh_CN'
 author = 'DingJing'
-project = 'Tiny Kernel'
+project = 'DingJingMaster Docs'
 #html_theme = 'alabaster'
 html_theme = "sphinx_rtd_theme"
 copyright = 'Copyright 2023 DingJing'
