@@ -16,5 +16,6 @@ API文档
     module.md
     hardware-interface.md
     clock-framework.md
+    sync-primitives.md
 
 
