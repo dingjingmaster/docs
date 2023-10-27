@@ -5,9 +5,9 @@
     :maxdepth: 2
     :caption: Contents:
 
-    api/index.md
-    driver-implementers/index.md
-    subsystem/index.md
-    locking/index.md
+    api/index.rst
+    driver-implementers/index.rst
+    subsystem/index.rst
+    locking/index.rst
 
 
