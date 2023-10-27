@@ -9,5 +9,6 @@ API文档
     string-manipulation.md
     bit-operations.md
     bitmap-operations.md
+    sort.md
 
 
