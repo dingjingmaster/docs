@@ -6,5 +6,8 @@
     :caption: Contents:
 
     api/index.md
+    driver-implementers/index.md
+    subsystem/index.md
+    locking/index.md
 
 
