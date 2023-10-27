@@ -1,4 +1,4 @@
-Kernel 文档
+DingJing's 文档
 ========================================
 
 .. toctree::
@@ -6,6 +6,7 @@ Kernel 文档
     :caption: Contents:
     
     basic/index.rst
+    kernel/index.rst
 
 
 
