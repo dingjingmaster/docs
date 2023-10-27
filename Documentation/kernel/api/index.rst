@@ -7,5 +7,6 @@ API文档
 
     string-conv.md
     string-manipulation.md
+    bit-operations.md
 
 
