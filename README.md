@@ -8,3 +8,9 @@
 我以前一直使用`hugo`以便把`markdown`生成静态页面，长时间使用后发现还是有一些问题————生成的文档太零散，阅读很不方便，因此就有了这个项目...
 
 pandoc --listings -f markdown -t latex -o aa.tex docs/index.md docs/gobject/index.md --pdf-engine=xelatex -V mainfont="Source Han Mono SC" -s
+
+## 依赖
+
+```shell
+sudo pacman -S pandoc texlive
+```
