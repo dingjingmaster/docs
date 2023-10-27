@@ -15,5 +15,6 @@ API文档
     ipc.md
     module.md
     hardware-interface.md
+    clock-framework.md
 
 
