@@ -12,5 +12,8 @@ API文档
     sort.md
     text-searching.md
     crc-and-math.md
+    ipc.md
+    module.md
+    hardware-interface.md
 
 
