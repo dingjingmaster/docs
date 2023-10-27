@@ -11,5 +11,6 @@ API文档
     bitmap-operations.md
     sort.md
     text-searching.md
+    crc-and-math.md
 
 
