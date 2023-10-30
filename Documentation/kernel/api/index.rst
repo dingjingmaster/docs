@@ -13,6 +13,8 @@ API文档
     text-searching.md
     crc-and-math.md
     ipc.md
+    fifo-buffer.md
+    relay-interface-support.md
     module.md
     hardware-interface.md
     clock-framework.md
