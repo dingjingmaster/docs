@@ -17,6 +17,8 @@ API文档
     relay-interface-support.md
     module.md
     hardware-interface.md
+    block-devices.md
+    char-devices.md
     clock-framework.md
     sync-primitives.md
 
