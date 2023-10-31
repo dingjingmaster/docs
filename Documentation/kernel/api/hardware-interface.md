@@ -402,4 +402,605 @@ struct resource *devm_request_free_mem_region(struct device *dev, struct resourc
 - `base`：
 - `size`：
 
+## MTRR Handling
 
+MTRR(Memory Type Range Registers)。是指处理内存类型范围寄存器的机制。
+
+MTRR 是 x86 架构中的一组寄存器，用于定义系统内存的访问类型。
+
+MTRR 提供了一种机制，可以为系统内存的不同区域指定不同的访问类型，例如写回缓存（write-back cache）、写直达（write-through）或者禁止缓存（uncached）。这些访问类型可以影响内存的性能和一致性。
+
+Linux 内核通过 MTRR handling 机制来管理和配置 MTRR 寄存器。这个机制允许内核在启动过程中读取和设置 MTRR 寄存器的值，以定义内存区域的访问类型。
+
+MTRR handling 在Linux内核中的主要任务包括：
+- 读取和解析系统中的MTRR寄存器的当前配置
+- 提供接口和工具，使用户能够查询和修改 MTRR 寄存器的值
+- 根据系统的需求，根据硬件限制和用户配置来自动配置MTRR寄存器
+- 与其它内核子系统（如缓存管理）进行协调，以确保内存访问类型的一致性和正确性
+
+通过适当配置MTRR寄存器，Linux内核可以优化系统的内存性能，特别是对于一些需要频繁访问的内存区域，如显存或者设备I/O区域。这些优化可以提高系统的响应速度和整体性能。
+
+> 注意：MTRR Handling 主要适用于 x86 架构的系统，而其它架构可能采用不同的内存访问类型管理机制。
+
+### arch_phys_wc_add
+
+函数签名：
+```c
+int arch_phys_wc_add(unsigned long base, unsigned long size);
+```
+
+说明：
+
+参数：
+- `base`：
+- `size`：
+
+## Security Framework
+
+### security_init
+
+函数签名：
+```c
+int security_init(void);
+```
+
+说明：
+
+### security_add_hooks
+
+函数签名：
+```c
+void security_add_hooks(struct security_hook_list *hooks, int count, const char *lsm);
+```
+
+说明：
+向hook列表中添加一个模块hook
+
+每个LSM都必须注册它的hook
+
+参数：
+- `hooks`：hook列表
+- `count`：要添加的hook数量
+- `lsm`：安全模块的名字
+
+### lsm_cred_alloc
+
+函数签名：
+```c
+int lsm_cred_alloc(struct cred *cred, gfp_t gfp);
+```
+
+说明：
+分配一个 struct cred 块
+
+参数：
+- `cred`：
+- `gfp`：
+
+### lsm_early_cred
+
+函数签名：
+```c
+void lsm_early_cred(struct cred *cred);
+```
+
+说明：
+在初始化中分配一个 `struct cred`
+
+参数：
+- `cred`
+
+### lsm_file_alloc
+
+函数签名：
+```c
+int lsm_file_alloc(struct file *file);
+```
+
+说明：
+
+参数：
+- `file`：
+
+### lsm_inode_alloc
+
+函数签名：
+```c
+int lsm_inode_alloc(struct inode *inode);
+```
+
+说明：
+
+参数：
+- `inode`：
+
+### lsm_task_alloc
+
+函数签名：
+```c
+int lsm_task_alloc(struct task_struct *task);
+```
+
+### lsm_ipc_alloc
+
+函数签名：
+```c
+int lsm_ipc_alloc(struct kern_ipc_perm *kip);
+```
+
+### lsm_msg_msg_alloc
+
+函数签名：
+```c
+int lsm_msg_msg_alloc(struct msg_msg *mp);
+```
+
+### lsm_early_task
+
+函数签名：
+```c
+void lsm_early_task(struct task_struct *task);
+```
+
+### lsm_superblock_alloc
+
+函数签名：
+```c
+int lsm_superblock_alloc(struct super_block *sb);
+```
+
+### security_fs_context_submount
+
+函数签名：
+```c
+int security_fs_context_submount(struct fs_context *fc, struct super_block *reference);
+```
+
+参数：
+- `fc`：
+- `reference`：
+
+### securityfs_create_file
+
+函数签名：
+```c
+struct dentry *securityfs_create_file(const char *name, umode_t mode, struct dentry *parent, void *data, const struct file_operations *fops);
+```
+
+参数：
+- `name`：
+- `mode`：
+- `parent`：
+- `data`：
+- `fops`：
+
+### securityfs_create_dir
+
+函数签名：
+```c
+struct dentry *securityfs_create_dir(const char *name, struct dentry *parent);
+```
+
+参数：
+- `name`：
+- `parent`：
+
+### securityfs_create_symlink
+
+函数签名：
+```c
+struct dentry *securityfs_create_symlink(const char *name, struct dentry *parent, const char *target, const struct inode_operations *iops);
+```
+
+参数：
+- `name`：
+- `parent`：
+- `target`：
+- `iops`：
+
+### securityfs_remove
+
+函数签名：
+```c
+void securityfs_remove(struct dentry *dentry);
+```
+
+参数：
+- `dentry`：
+
+## 审计接口
+
+### audit_log_start
+
+函数签名：
+```c
+struct audit_buffer *audit_log_start(struct audit_context *ctx, gfp_t gfp_mask, int type);
+```
+
+说明：
+成功时返回audit_buffer指针，错误时返回NULL。
+
+获取审计缓冲区。这个例程锁定以获取审计缓冲区，但是对audit_log_\*format的调用不需要锁定。如果任务(ctx)是当前处于系统调用中的任务，则将该系统调用标记为可审计的，并在系统调用退出时写入审计记录。如果没有关联的任务，那么任务上下文(ctx)应该为NULL。
+
+参数：
+- `ctx`：审计上下文
+- `gfp_mask`：
+- `type`：审计的消息类型
+
+### audit_log_format
+
+函数签名：
+```c
+void audit_log_format(struct audit_buffer *ab, const char *fmt, ...);
+```
+
+说明：
+
+参数：
+- `ab`：
+- `fmt`：
+- `...`：
+
+### audit_log_end
+
+函数签名：
+```c
+void audit_log_end(struct audit_buffer *ab);
+```
+
+说明：
+
+参数：
+- `ab`：
+
+### audit_log
+
+函数签名：
+```c
+void audit_log(struct audit_context *ctx, gfp_t gfp_mask, int type, const char *fmt, ...);
+```
+
+说明：
+
+参数：
+- `ctx`：
+- `gfp_mask`：
+- `type`：
+- `fmt`：
+- `...`：
+
+### audit_filter_uring
+
+函数签名：
+```c
+void audit_filter_uring(struct task_struct *tsk, struct audit_context *ctx);
+```
+
+说明：
+
+参数：
+- `tsk`：
+- `ctx`：
+
+### audit_reset_context
+
+函数签名：
+```c
+void audit_reset_context(struct audit_context *ctx);
+```
+
+说明：
+
+参数：
+- `ctx`：
+
+### audit_alloc
+
+函数签名：
+```c
+int audit_alloc(struct task_struct *tsk);
+```
+
+说明：
+
+参数：
+- `tsk`：
+
+### audit_log_uring
+
+函数签名：
+```c
+void audit_log_uring(struct audit_context *ctx);
+```
+
+说明：
+
+参数：
+- `ctx`：
+
+### __audit_free
+
+函数签名：
+```c
+void __audit_free(struct task_struct *tsk);
+```
+
+说明：
+
+参数：
+- `tsk`：
+
+### audit_return_fixup
+
+函数签名：
+```c
+void audit_return_fixup(struct audit_context *ctx, int success, long code);
+```
+
+说明：
+
+参数：
+- `ctx`：
+- `success`：
+- `code`：
+
+### __audit_uring_entry
+
+函数签名：
+```c
+void __audit_uring_entry(u8 op);
+```
+
+说明：
+
+参数：
+
+### __audit_uring_exit
+
+函数签名：
+```c
+void __audit_uring_exit(int success, long code);
+```
+
+说明：
+
+参数：
+- `success`：
+- `code`：
+
+### __audit_syscall_entry
+
+函数签名：
+```c
+void __audit_syscall_entry(int major, unsigned long a1, unsigned long a2, unsigned long a3, unsigned long a4);
+```
+
+说明：
+
+参数：
+- `major`：
+- `a1`:
+- `a2`:
+- `a3`:
+- `a4`:
+
+### __audit_syscall_exit
+
+函数签名：
+```c
+void __audit_syscall_exit(int success, long return_code);
+```
+
+说明：
+
+参数：
+- `success`：
+- `return_code`：
+
+### __audit_reusename
+
+函数签名：
+```c
+struct filename *__audit_reusename(__user const char *uptr);
+```
+
+说明：
+
+参数：
+- `uptr`：
+
+### __audit_getname
+
+函数签名：
+```c
+void __audit_getname(struct filename *name);
+```
+
+说明：
+
+参数：
+- `name`：
+
+### __audit_inode
+
+函数签名：
+```c
+void __audit_inode(struct filename *name, const struct dentry *dentry, unsigned int flags);
+```
+
+说明：
+
+参数：
+- `name`：
+- `dentry`：
+- `flags`：
+
+### auditsc_get_stamp
+
+函数签名：
+```c
+int auditsc_get_stamp(struct audit_context *ctx, struct timespec64 *t, unsigned int *serial);
+```
+
+说明：
+
+参数：
+- `ctx`：
+- `t`：
+- `serial`：
+
+### __audit_mq_open
+
+函数签名：
+```c
+void __audit_mq_open(int oflag, umode_t mode, struct mq_attr *attr);
+```
+
+### __audit_mq_sendrecv
+
+函数签名：
+```c
+void __audit_mq_sendrecv(mqd_t mqdes, size_t msg_len, unsigned int msg_prio, const struct timespec64 *abs_timeout);
+```
+
+### __audit_mq_notify
+
+函数签名：
+```c
+void __audit_mq_notify(mqd_t mqdes, const struct sigevent *notification);
+```
+
+### __audit_mq_getsetattr
+
+函数签名：
+```c
+void __audit_mq_getsetattr(mqd_t mqdes, struct mq_attr *mqstat);
+```
+
+### __audit_ipc_obj
+
+函数签名：
+```c
+void __audit_ipc_obj(struct kern_ipc_perm *ipcp);
+```
+
+### __audit_ipc_set_perm
+
+函数签名：
+```c
+void __audit_ipc_set_perm(unsigned long qbytes, uid_t uid, gid_t gid, umode_t mode);
+```
+
+### __audit_socketcall
+
+函数签名：
+```c
+int __audit_socketcall(int nargs, unsigned long *args);
+```
+
+### __audit_fd_pair
+
+函数签名：
+```c
+void __audit_fd_pair(int fd1, int fd2);
+```
+
+### __audit_sockaddr
+
+函数签名：
+```c
+int __audit_sockaddr(int len, void *a);
+```
+
+### audit_signal_info_syscall
+
+函数签名：
+```c
+int audit_signal_info_syscall(struct task_struct *t);
+```
+
+### __audit_log_bprm_fcaps
+
+函数签名：
+```c
+int __audit_log_bprm_fcaps(struct linux_binprm *bprm, const struct cred *new, const struct cred *old);
+```
+
+### __audit_log_capset
+
+函数签名：
+```c
+void __audit_log_capset(const struct cred *new, const struct cred *old);
+```
+
+### audit_core_dumps
+
+函数签名：
+```c
+void audit_core_dumps(long signr);
+```
+
+### audit_seccomp
+
+函数签名：
+```c
+void audit_seccomp(unsigned long syscall, long signr, int code);
+```
+
+### audit_rule_change
+
+函数签名：
+```c
+int audit_rule_change(int type, int seq, void *data, size_t datasz);
+```
+
+### audit_list_rules_send
+
+函数签名：
+```c
+int audit_list_rules_send(struct sk_buff *request_skb, int seq);
+```
+
+### parent_len
+
+函数签名：
+```c
+int parent_len(const char *path);
+```
+
+### audit_compare_dname_path
+
+函数签名：
+```c
+int audit_compare_dname_path(const struct qstr *dname, const char *path, int parentlen);
+```
+
+## Accounting Framework
+
+### sys_acct
+
+函数签名：
+```c
+long sys_acct(const char __user *name);
+```
+
+说明：
+
+参数：
+- `name`：
+
+### acct_collect
+
+函数签名：
+```c
+void acct_collect(long exitcode, int group_dead);
+```
+
+### acct_process
+
+函数签名：
+```c
+void acct_process(void);
+```
+
+## 块设备
