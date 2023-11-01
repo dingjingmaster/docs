@@ -1,11 +1,11 @@
-驱动实现
+学习路径
 ========================================
+
+内核代码从 Documentation/admin-guide/index.html 开始阅读
 
 .. toctree::
     :maxdepth: 1
     :caption: 目录:
-
-    driver-model.md
 
 
 
