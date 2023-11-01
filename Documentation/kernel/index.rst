@@ -6,6 +6,7 @@
     :caption: Contents:
 
     api/index.rst
+    cmwq/index.rst
     driver-implementers/index.rst
     subsystem/index.rst
     locking/index.rst
