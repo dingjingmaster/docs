@@ -17,6 +17,7 @@ API文档
     relay-interface-support.md
     module.md
     hardware-interface.md
+    security-framework.md
     audit-interfaces.md
     accounting-framework.md
     block-devices.md

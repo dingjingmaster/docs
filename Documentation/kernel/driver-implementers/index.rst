@@ -5,5 +5,7 @@
     :maxdepth: 1
     :caption: Contents:
 
+    driver-model.md
+
 
 
