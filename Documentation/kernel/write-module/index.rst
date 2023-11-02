@@ -16,7 +16,7 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     talking-device-files.md
     startup-param.md
     system-calls.md
-    blocking-processes.md
+    blocking-processed.md
     replacing-printk.md
     scheduling-tasks.md
     interrupt-handlers.md
