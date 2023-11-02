@@ -17,6 +17,9 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     startup-param.md
     system-calls.md
     blocking-processes.md
+    replacing-printk.md
+    scheduling-tasks.md
+    interrupt-handlers.md
 
 
 
