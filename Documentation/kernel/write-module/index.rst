@@ -20,6 +20,8 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     replacing-printk.md
     scheduling-tasks.md
     interrupt-handlers.md
+    symmetrical-multi-processing.md
+    tip.md
 
 
 
