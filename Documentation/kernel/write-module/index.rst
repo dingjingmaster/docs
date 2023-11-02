@@ -14,6 +14,9 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     proc-fs.md
     proc-input.md
     talking-device-files.md
+    startup-param.md
+    system-calls.md
+    blocking-processes.md
 
 
 
