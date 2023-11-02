@@ -12,6 +12,9 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     hello-world.md
     character-device.md
     proc-fs.md
+    proc-input.md
+    talking-device-files.md
+
 
 
 
