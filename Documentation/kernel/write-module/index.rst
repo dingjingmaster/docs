@@ -10,6 +10,8 @@ https://www.linuxdoc.org/LDP/lkmpg/mpg.html
     000.md
     001.md
     hello-world.md
+    character-device.md
+    proc-fs.md
 
 
 
