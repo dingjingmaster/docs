@@ -6,6 +6,8 @@
     :caption: 目录:
 
     00/index.rst
+    write-module/index.rst
+
     driver-implementers/index.rst
     api/index.rst
     cmwq/index.rst
