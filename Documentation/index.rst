@@ -7,6 +7,7 @@ DingJing's 文档
     
     basic/index.rst
     kernel/index.rst
+    linux/index.rst
 
 
 
