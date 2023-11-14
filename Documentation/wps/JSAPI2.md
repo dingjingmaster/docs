@@ -258,3 +258,4 @@ wpsClient.jsPluginsXml
 
 ## 常用功能开发
 https://www.kdocs.cn/l/cmQgqoUHBUiL
+https://p.wpseco.cn/wiki/doc/63338888d7c60f8bf1fd8700
