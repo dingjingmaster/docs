@@ -7,3 +7,5 @@ Linux开发教程
 
     integration/index.rst
     initramfs/index.rst
+    systemd/index.rst
+    qemu/index.rst
