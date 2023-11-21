@@ -7,6 +7,7 @@ initramfs
 
     000.md
     001.md
+    002.md
 
 
 

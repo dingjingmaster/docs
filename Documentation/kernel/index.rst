@@ -13,7 +13,6 @@
     cmwq/index.rst
     subsystem/index.rst
     locking/index.rst
-    initramfs/index.rst
     000.md
 
 
