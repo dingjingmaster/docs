@@ -3,7 +3,7 @@ DingJing's 文档
 
 .. toctree::
     :maxdepth: 2
-    :caption: 索引
+    :caption: 目录
     
     basic/index.rst
     kernel/index.rst
