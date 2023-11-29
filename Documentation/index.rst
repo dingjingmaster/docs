@@ -10,6 +10,7 @@ DingJing's 文档
     linux/index.rst
     wps/index.rst
     cuda/index.rst
+    x/index.rst
 
 
 
