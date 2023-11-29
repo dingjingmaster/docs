@@ -14,13 +14,19 @@ html_theme = "sphinx_rtd_theme"
 copyright = 'Copyright 2023 DingJing'
 
 
+        #'myst_parser',
 extensions = [
-        'myst_parser',
+    'recommonmark',
+    'sphinx.ext.mathjax',
+    'sphinx_markdown_tables',
 ]
 
 exclude_patterns = []
 templates_path = ['_templates']
 html_static_path = ['_static']
+html_js_files = [
+    'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=Tex-AMS-MML_HTMLorMML',
+]
 
 html_theme_options = {
 
@@ -30,5 +36,5 @@ html_theme_options = {
 source_suffix = {
     '.rst': 'restructuredtext',
     '.txt': 'restructuredtext',
-    '.md': 'markdown',
+    '.md' : 'markdown',
 }
