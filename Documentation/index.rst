@@ -11,17 +11,8 @@ DingJing's 文档
     wps/index.rst
     cuda/index.rst
     x/index.rst
+    kernel-api-2.6.30/index.rst
 
 
 
-索引
-==================
-
-* :ref:`genindex`
-
-..
-    * :ref:`search`
-
-..
-    * :ref:`modindex`
 
