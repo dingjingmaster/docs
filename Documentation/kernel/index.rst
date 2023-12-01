@@ -1,4 +1,4 @@
-内核文档(6.1.60>=)
+内核文档(基于6.0.0)
 ========================================
 
 .. toctree::
@@ -13,6 +13,7 @@
     cmwq/index.rst
     subsystem/index.rst
     locking/index.rst
+    UML/index.rst
     000.md
 
 
