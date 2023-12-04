@@ -1,12 +1,7 @@
-X11教程
+X协议C接口
 ========================================
 
 .. toctree::
     :maxdepth: 1
     :caption: 目录:
-
-    cmd/index.rst
-    proto/index.rst
-    xlib/index.rst
-    freedesktop/index.rst
 

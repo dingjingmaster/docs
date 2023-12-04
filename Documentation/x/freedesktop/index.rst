@@ -1,12 +1,9 @@
-X11教程
+freedesktop
 ========================================
 
 .. toctree::
     :maxdepth: 1
     :caption: 目录:
 
-    cmd/index.rst
-    proto/index.rst
-    xlib/index.rst
-    freedesktop/index.rst
+    specifications/index.rst
 
