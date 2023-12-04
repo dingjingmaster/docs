@@ -1,0 +1,11 @@
+# xkbcomp
+
+> 编译XKB键盘描述文件
+
+xkbcomp keymap编译器将XKB keymap的描述转换为几种输出格式之一。xkbcomp最常见的用途是创建一个编译后的按键映射文件(.xkm扩展名)，可以由支持xkb的X服务器或实用程序直接读取。keymap编译器还可以生成C头文件或XKB源文件。xkbcomp生成的C头文件可以由需要内置默认keymap的X服务器或实用程序包含。由xkbcomp生成的XKB源文件是完全解析的，可以用来验证通常构成XKB keymap的文件是否被正确合并，或者创建包含keymap完整描述的单个文件。
+
+源文件可以指定X显示文件，也可以指定.xkb或.xkm文件;除非明确指定，否则目标格式取决于源格式。编译.xkb (keymap源)文件默认生成.xkm(已编译keymap文件)。如果源文件是.xkm文件或X显示，xkbcomp默认生成keymap源文件。
+
+如果目标是X Display，则用编译后的keymap更新该显示的keymap。
+
+目标的名称通常是从源的名称计算出来的，并根据需要替换扩展名。当从包含多个映射的文件编译单个映射时，xkbcomp通过向要使用的映射的名称附加适当的扩展名来构造目标文件名。

@@ -1,0 +1,75 @@
+X相关命令
+========================================
+
+.. toctree::
+    :maxdepth: 1
+    :caption: 目录:
+
+    bdftopcf.md
+    bdftruncate.md
+    ccmakedep.md
+    cleanlinks.md
+    cvt.md
+    cxpm.md
+    dmxtodmx.md
+    gccmakedep.md
+    gtf.md
+    iceauth.md
+    imake.md
+    indir.md
+    luit.md
+    makedepend.md
+    makeg.md
+    mergelib.md
+    mkdirhier.md
+    mkfontdir.md
+    mkfontscale.md
+    mkhtmlindex.md
+    revpath.md
+    sessreg.md
+    setxbmap.md
+    showfont.md
+    smproxy.md
+    sxpm.md
+    ucs2any.md
+    vdltodmx.md
+    vmmouse_detect.md
+    x11perf.md
+    x11perfcomp.md
+    xauth.md
+    xbacklight.md
+    xcmsdb.md
+    xcursorgen.md
+    xdmx.md
+    xdmxconfig.md
+    xdpyinfo.md
+    xdriinfo.md
+    xev.md
+    xgamma.md
+    xhost.md
+    xinput.md
+    xkbbell.md
+    xkbcomp.md
+    xkbevd.md
+    xkbvleds.md
+    xkbwatch.md
+    xkill.md
+    xlsatoms.md
+    xlsclients.md
+    xmark.md
+    xmkmf.md
+    xmodmap.md
+    xnest.md
+    xorg.md
+    xprop.md
+    xrandr.md
+    xrdb.md
+    xrefresh.md
+    xserver.md
+    xset.md
+    xsetroot.md
+    xvfb.md
+    xvinfo.md
+    xwd.md
+    xwininfo.md
+    xwud.md

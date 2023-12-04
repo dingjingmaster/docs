@@ -2,7 +2,7 @@ DingJing's 文档
 ========================================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
     :caption: 目录
     
     basic/index.rst

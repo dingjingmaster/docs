@@ -5,5 +5,6 @@ X11教程
     :maxdepth: 1
     :caption: 目录:
 
+    cmd/index.rst
     proto/index.rst
 

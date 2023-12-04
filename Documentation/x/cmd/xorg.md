@@ -1,0 +1,5 @@
+# xorg
+
+Xorg是一个功能齐全的X服务器，最初是为在Intel x86硬件上运行的UNIX和类UNIX操作系统设计的。它现在可以在更广泛的硬件和操作系统平台上运行。
+
+这项工作是由X.Org基金会从XFree86项目的XFree86 4.4rc2版本中派生出来的。XFree86版本最初由Thomas Roell从X386 1.2衍生而来，后者由Snitily图形咨询服务公司贡献给X11R5。
