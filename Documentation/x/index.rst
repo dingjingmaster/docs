@@ -8,5 +8,6 @@ X11教程
     cmd/index.rst
     proto/index.rst
     xlib/index.rst
+    xcb/index.rst
     freedesktop/index.rst
 
