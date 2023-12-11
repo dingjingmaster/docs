@@ -9,3 +9,4 @@ Linux开发教程
     initramfs/index.rst
     systemd/index.rst
     qemu/index.rst
+    wm/index.rst
