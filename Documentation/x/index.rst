@@ -9,5 +9,6 @@ X11教程
     proto/index.rst
     xlib/index.rst
     xcb/index.rst
+    xbindkeys/index.rst
     freedesktop/index.rst
 
