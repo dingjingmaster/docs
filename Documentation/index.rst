@@ -11,6 +11,7 @@ DingJing's 文档
     wps/index.rst
     cuda/index.rst
     x/index.rst
+    opengl/index.rst
     ev/index.rst
     kernel-api-2.6.30/index.rst
 
