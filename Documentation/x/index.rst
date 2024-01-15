@@ -11,4 +11,5 @@ X11教程
     xcb/index.rst
     xbindkeys/index.rst
     freedesktop/index.rst
+    qa/x.md
 
