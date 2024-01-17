@@ -6,6 +6,7 @@ DingJing's 文档
     :caption: 目录
     
     basic/index.rst
+    rust/index.rst
     kernel/index.rst
     linux/index.rst
     wps/index.rst
