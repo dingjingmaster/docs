@@ -10,3 +10,4 @@ Linux开发教程
     systemd/index.rst
     qemu/index.rst
     wm/index.rst
+    cmd/index.rst
