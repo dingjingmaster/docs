@@ -111,6 +111,9 @@ ip link set eth0 master br0
 ip link add eth1 type dummy
 ```
 
+type类型：
+- veth：创建一对虚拟以太网设备，形成一个虚拟网桥。这对设备会成对出现，分别是 vethX 和 vethX_peer，可以将它们连接到不同的网络名称空间中，以实现网络隔离和通信
+
 创建一个虚拟网卡eth1，类型为dummy
 
 **创建桥接接口**
@@ -137,10 +140,145 @@ ip link add tun0 type ipip remote <对端IP地址> local <本地IP地址>
 
 创建一个隧道接口 tun0，类型为 ipip，并指定远程IP地址和本地IP地址。
 
+## ip addr show
+
+**显示网卡IP信息**
+
+```shell
+ip addr show
+```
+
+**配置网卡IP**
+
+```shell
+ip addr add 192.168.0.1/24 dev eth0
+ip addr del 192.168.0.1/24 dev eth0
+```
+
+## ip route
+
+**显示系统路由**
+
+```shell
+ip route show
+```
+
+**设置系统默认路由**
+
+```shell
+ip route add default via 192.168.1.254
+```
+
+**查看路由信息**
+
+```shell
+ip route list
+```
+
+**设置指定网段网关**
+
+```shell
+ip route add 192.168.4.0/24 via 192.168.0.254 dev eth0
+```
+
+**设置默认网关**
+
+```shell
+ip route add default via 192.168.0.254 dev eth0
+```
+
+**删除网段的网关**
+
+```shell
+ip route del 192.168.4.0/24
+```
+
+**删除默认路由**
+
+```shell
+ip route del default
+```
+
+**删除路由**
+
+```shell
+ip route delete 192.168.1.0/24 dev eth0
+```
+
+## ip rule
+
+某些情况下，不只需要通过数据包的目的地址决定路由，可能还需要通过其它一些域：源地址、IP协议、传输层端口甚至数据包负载。这就叫做：策略路由（Policy Routing）
+
+策略路由比传统路由在功能上更强大，使用更灵活。
+
+路由策略会根据一些条件，将路由请求转向不同的路由表。
+
+一条路由策略包含三个信息：
+- rule 的优先级；数字越小表示优先级越高，默认内核为路由策略数据库配置三条缺省的规则，即：rule 0，rule 32766， rule 32767（数字是rule的优先级）
+- rule 条件
+- rule 路由表
+
+### 用法
+
+```shell
+ip rule [list | add | del] SELECTOR ACTION
+
+SELECTOR := [from PREFIX 数据包源地址]
+            [to PREFIX 数据包目的地址] 
+            [tos TOS 服务类型]
+            [dev STRING 物理接口]
+
+            [pref NUMBER 优先级] [fwmark MARK iptables 标签]
+
+ACTION := [table TABLE_ID 指定所使用的路由表] 
+            [nat ADDRESS 网络地址转换]
+            [prohibit 丢弃该表 | reject 拒绝该包 | unreachable 丢弃该包]
+            [flowid CLASSID]
+
+TABLE_ID := [local | main | default | NUMBER]
+```
+
+SELECTOR 具体参数如下：
+- From —— 源地址
+- To —— 目的地址（这里是选择规则时候使用，查找路由表时候也使用）
+- Tos —— IP包头的 TOS（type of service）域
+- Dev —— 物理接口
+- Fwmark —— 防火墙参数
+
+ACTION 动作：
+- Table 指明所使用的表
+- Nat 透明网关
+- prohibit 丢弃该包，并发送 COMM.ADM.PROHIITED的ICMP信息
+- Reject 但存丢弃该包
+- Unreachable 丢弃该包，并发送 NET UNREACHABLE 的 ICMP 信息
+
+**添加策略**
+
+```shell
+# 添加规则，所有数据包选用表1路由，优先级是 32800
+ip rule add from 0/0 table 1 pref 32800 
+
+# 添加规则，IP为 192.168.3.112, tos 等于 0x10 的包，使用路由表2，优先级是32801，动作是丢弃
+ip rule add from 192.168.3.112/32 ros 0x10 table 2 pref 3281 prohibit
+
+# 添加策略不指定 pref 优先级，系统会在 main 的前面1位创建
+ip rule add from 171.43.122.52 tab 200
+```
+
+**iptables 的 set-mark**
+
+使用 Netfilter 的 managle 机制针对特定的数据包设置 MARK 值，在此将 3389 端口的数据包的 MARK 值设置为1，然后将fwmark 1 的规则应用到 ip rule 上即可。这样就可实现特定程序的流量走不同的路线
+
+```shell
+ip tables -t managle -A OUTPUT -p tcp --dport 8080 -j MARK --set-mark --set-mark 1
+ip rule add fwmark 1 table 20 pref 20
+ip route add default via 171.43.122.52 table 20
+```
 
 
 
 
+## 其它
 **其它网络设备相关配置**
 ```shell
 ip link add ...
@@ -151,3 +289,4 @@ ip link xstats ...
 ip link afstats ...
 ip link property ...
 ```
+
