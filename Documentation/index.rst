@@ -8,6 +8,7 @@ DingJing's 文档
     basic/index.rst
     cuda/index.rst
     ev/index.rst
+    fuse3/index.rst
     kernel/index.rst
     kernel-api-2.6.30/index.rst
     linux/index.rst
