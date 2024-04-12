@@ -12,6 +12,7 @@ DingJing's 文档
     kernel/index.rst
     kernel-api-2.6.30/index.rst
     linux/index.rst
+    ml/index.rst
     net/index.rst
     opengl/index.rst
     rust/index.rst
