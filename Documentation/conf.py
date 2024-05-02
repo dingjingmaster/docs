@@ -16,6 +16,7 @@ copyright = 'Copyright 2023 DingJing'
         #'myst_parser',
 extensions = [
     'recommonmark',
+    'jupyter_sphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.imgmath',
     'sphinx_markdown_tables',
