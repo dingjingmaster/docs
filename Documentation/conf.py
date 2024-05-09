@@ -19,8 +19,8 @@ extensions = [
     'jupyter_sphinx',
     'sphinx.ext.mathjax',
     'sphinx.ext.imgmath',
-    'sphinx_markdown_tables',
 ]
+#'sphinx_markdown_tables',
 
 
 exclude_patterns = []
